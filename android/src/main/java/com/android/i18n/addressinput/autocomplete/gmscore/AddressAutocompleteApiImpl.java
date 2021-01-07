@@ -1,5 +1,6 @@
 package com.android.i18n.addressinput.autocomplete.gmscore;
 
+import android.annotation.SuppressLint;
 import android.location.Location;
 import android.util.Log;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -28,8 +29,8 @@ import java.util.List;
  * following permissions in their AndroidManifest.xml:
  *
  * <pre>
- *   <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
- *   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+ *   &lt;uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/&gt;
+ *   &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/&gt;
  * </pre>
  *
  * Callers should check that the required permissions are actually present.
@@ -67,6 +68,7 @@ public class AddressAutocompleteApiImpl implements AddressAutocompleteApi {
   }
 
   @Override
+  @SuppressLint("MissingPermission")
   public void getAutocompletePredictions(
       String query, final FutureCallback<List<? extends AddressAutocompletePrediction>> callback) {
     Location deviceLocation = locationApi.getLastLocation(googleApiClient);

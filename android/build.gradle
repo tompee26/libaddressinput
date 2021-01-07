@@ -14,26 +14,32 @@
  * limitations under the License.
  */
 
-buildscript {
-    repositories {
-        mavenCentral()
-        mavenLocal()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.0'
-    }
-}
-
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.panpf.bintray-publish'
+
+publish {
+    def groupProjectID = 'com.tompee.addressinput'
+    def artifactProjectID = 'libaddressinput'
+    def publishVersionID = '1.0.0'
+
+    userOrg = 'tompee26'
+    repoName = 'libaddressinput'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'A library that assist application developers in collecting and handling postal addresses from all over the world.'
+    website = 'https://github.com/google/libaddressinput'
+}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
 dependencies {
-    compile project(':common')
-    compile 'com.google.android.gms:play-services-location:10.0.0'
-    compile 'com.google.android.gms:play-services-places:9.2.0'
+    api project(':common')
+    api 'com.google.android.gms:play-services-location:17.1.0'
+    api 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.google.guava:guava-gwt:18.0'
 }
 
 android {
@@ -56,11 +62,10 @@ android {
      * The obvious way to fix this would be allow wildcards (ie, "22.+") but
      * Android have explicitly said that they won't do this.
      */
-    compileSdkVersion 22
-    buildToolsVersion '21.1.2'
+    compileSdkVersion 30
     defaultConfig {
-      minSdkVersion 17
-      targetSdkVersion 22
+        minSdkVersion 17
+        targetSdkVersion 30
     }
 }
 

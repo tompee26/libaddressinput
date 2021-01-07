@@ -17,9 +17,24 @@
 /*
  * Root Gradle file for Java address input widget (under "common" and "android")
  */
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.0-beta03'
+        classpath 'com.github.panpf.bintray-publish:bintray-publish:1.0.0'
+    }
+}
+
 allprojects {
-  repositories {
-    mavenCentral()
-    mavenLocal()
-  }
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        mavenLocal()
+    }
 }

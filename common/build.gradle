@@ -13,17 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-buildscript {
-    repositories {
-        mavenCentral()
-        mavenLocal()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.0'
-    }
-}
-
 apply plugin: 'java'
 
 sourceCompatibility = '1.7'
@@ -43,25 +32,25 @@ sourceSets {
 }
 
 test {
-  /* Listen to events in the test execution lifecycle. */
-  beforeTest { descriptor -> logger.lifecycle("Running test: " + descriptor) }
+    /* Listen to events in the test execution lifecycle. */
+    beforeTest { descriptor -> logger.lifecycle("Running test: " + descriptor) }
 
-  /* Show standard out and standard error of the test JVM(s) on the console. */
-  // testLogging.showStandardStreams = true
+    /* Show standard out and standard error of the test JVM(s) on the console. */
+    // testLogging.showStandardStreams = true
 
-  /* Listen to standard out and standard error of the test JVM(s). */
-  // onOutput { descriptor, event ->
-  //   logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
-  // }
+    /* Listen to standard out and standard error of the test JVM(s). */
+    // onOutput { descriptor, event ->
+    //   logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+    // }
 }
 
 dependencies {
-  compile 'com.google.guava:guava-gwt:18.0'
-  /* Note that gradle will warn about this not being the same version as *
-   * the Android JSON library (but will not compile if it's removed).    */
-  compile 'org.json:json:20090211'
-  testCompile 'junit:junit:4.11'
-  testCompile 'com.google.truth:truth:0.25'
-  testCompile 'org.mockito:mockito-core:1.9.5'
+    implementation 'com.google.guava:guava-gwt:18.0'
+    /* Note that gradle will warn about this not being the same version as *
+     * the Android JSON library (but will not compile if it's removed).    */
+    implementation 'org.json:json:20180813'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'com.google.truth:truth:0.25'
+    testImplementation 'org.mockito:mockito-core:2.21.0'
 }
 
