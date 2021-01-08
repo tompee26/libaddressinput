@@ -676,7 +676,7 @@ public final class AddressData {
     }
 
     /**
-     * TODO: Remove this method in favor of setAddressLines(Iterable<String>).
+     * TODO: Remove this method in favor of setAddressLines(Iterable&lt;String&gt;).
      *
      * @deprecated Use {@link #setAddressLines} instead.
      */
@@ -686,7 +686,7 @@ public final class AddressData {
     }
 
     /**
-     * TODO: Remove this method in favor of setAddressLines(Iterable<String>).
+     * TODO: Remove this method in favor of setAddressLines(Iterable&lt;String&gt;).
      *
      * @deprecated Use {@link #setAddressLines} instead.
      */

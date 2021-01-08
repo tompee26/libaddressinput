@@ -69,7 +69,7 @@ public final class FormOptions {
    * </strong>. Fields which are specified here but not part of a country's specified fields will be
    * ignored.
    * <p>
-   * This method is j2objc- & iOS API friendly as the signature does not expose varargs / Java
+   * This method is j2objc- &amp; iOS API friendly as the signature does not expose varargs / Java
    * arrays or collections.
    */
   public FormOptions setReadonly(AddressField field) {
@@ -85,15 +85,15 @@ public final class FormOptions {
    * but which are not specified here, will appear in their original position in the form. For
    * example, if a region defines the following fields:
    * <pre>
-   * [ RECIPIENT -> ORGANIZATION -> STREET_ADDRESS -> LOCALITY -> ADMIN_AREA -> COUNTRY ]
+   * [ RECIPIENT -&gt; ORGANIZATION -&gt; STREET_ADDRESS -&gt; LOCALITY -&gt; ADMIN_AREA -&gt; COUNTRY ]
    * </pre>
    * and the custom ordering for that region is (somewhat contrived):
    * <pre>
-   * [ ORGANIZATION -> COUNTRY -> RECIPIENT ]
+   * [ ORGANIZATION -&gt; COUNTRY -&gt; RECIPIENT ]
    * </pre>
    * Then the visible order of the input fields will be:
    * <pre>
-   * [ ORGANIZATION -> COUNTRY -> STREET_ADDRESS -> LOCALITY -> ADMIN_AREA -> RECIPIENT ]
+   * [ ORGANIZATION -&gt; COUNTRY -&gt; STREET_ADDRESS -&gt; LOCALITY -&gt; ADMIN_AREA -&gt; RECIPIENT ]
    * </pre>
    * <ul>
    * <li>Fields not specified in the custom ordering (STREET_ADDRESS, LOCALITY, ADMIN_AREA)

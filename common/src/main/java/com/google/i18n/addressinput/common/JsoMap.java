@@ -77,7 +77,6 @@ public final class JsoMap extends JSONObject {
    *
    * @param key key name.
    * @return string value.
-   * @throws ClassCastException, IllegalArgumentException.
    */
   @Override
   public String get(String key) {

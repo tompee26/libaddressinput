@@ -36,6 +36,7 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
     api project(':common')
     api 'com.google.android.gms:play-services-location:17.1.0'
     api 'com.google.android.gms:play-services-places:17.0.0'
@@ -64,7 +65,7 @@ android {
      */
     compileSdkVersion 30
     defaultConfig {
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 30
     }
 }

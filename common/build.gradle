@@ -13,7 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-apply plugin: 'java'
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.panpf.bintray-publish'
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+    }
+}
+
+publish {
+    def groupProjectID = 'com.tompee.addressinput'
+    def artifactProjectID = 'common'
+    def publishVersionID = '1.0.0'
+
+    userOrg = 'tompee26'
+    repoName = 'libaddressinput'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'A library that assist application developers in collecting and handling postal addresses from all over the world.'
+    website = 'https://github.com/google/libaddressinput'
+}
+
 
 sourceCompatibility = '1.7'
 targetCompatibility = '1.7'
@@ -31,24 +55,21 @@ sourceSets {
     }
 }
 
-test {
-    /* Listen to events in the test execution lifecycle. */
-    beforeTest { descriptor -> logger.lifecycle("Running test: " + descriptor) }
-
-    /* Show standard out and standard error of the test JVM(s) on the console. */
-    // testLogging.showStandardStreams = true
-
-    /* Listen to standard out and standard error of the test JVM(s). */
-    // onOutput { descriptor, event ->
-    //   logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
-    // }
-}
+//test {
+//    /* Listen to events in the test execution lifecycle. */
+//    beforeTest { descriptor -> logger.lifecycle("Running test: " + descriptor) }
+//
+//    /* Show standard out and standard error of the test JVM(s) on the console. */
+//    // testLogging.showStandardStreams = true
+//
+//    /* Listen to standard out and standard error of the test JVM(s). */
+//    // onOutput { descriptor, event ->
+//    //   logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+//    // }
+//}
 
 dependencies {
     implementation 'com.google.guava:guava-gwt:18.0'
-    /* Note that gradle will warn about this not being the same version as *
-     * the Android JSON library (but will not compile if it's removed).    */
-    implementation 'org.json:json:20180813'
     testImplementation 'junit:junit:4.13'
     testImplementation 'com.google.truth:truth:0.25'
     testImplementation 'org.mockito:mockito-core:2.21.0'

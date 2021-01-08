@@ -230,9 +230,9 @@ public final class FormatInterpreter {
   /**
    * Gets formatted address. For example,
    *
-   * <p> John Doe</br>
-   * Dnar Corp</br>
-   * 5th St</br>
+   * <p> John Doe
+   * Dnar Corp
+   * 5th St
    * Santa Monica CA 90123 </p>
    *
    * This method does not validate addresses. Also, it will "normalize" the result strings by

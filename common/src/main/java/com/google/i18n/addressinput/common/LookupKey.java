@@ -25,11 +25,11 @@ import java.util.Map;
  * the server. There are two key types: {@link KeyType#DATA} or {@link KeyType#EXAMPLES}.
  * <p>
  * The {@link KeyType#DATA} key is built based on a universal Address hierarchy, which is:<br>
- * {@link AddressField#COUNTRY} -> {@link AddressField#ADMIN_AREA} -> {@link AddressField#LOCALITY}
- * -> {@link AddressField#DEPENDENT_LOCALITY}
+ * {@link AddressField#COUNTRY} -&gt; {@link AddressField#ADMIN_AREA} -&gt; {@link AddressField#LOCALITY}
+ * -&gt; {@link AddressField#DEPENDENT_LOCALITY}
  * <p>
  * The {@link KeyType#EXAMPLES} key is built with the following format:<br>
- * {@link AddressField#COUNTRY} -> {@link ScriptType} -> language. </p>
+ * {@link AddressField#COUNTRY} -&gt; {@link ScriptType} -&gt; language. </p>
  */
 public final class LookupKey {
   /**
