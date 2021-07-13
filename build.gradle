@@ -22,19 +22,36 @@ buildscript {
         mavenCentral()
         mavenLocal()
         google()
-        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0-beta03'
-        classpath 'com.github.panpf.bintray-publish:bintray-publish:1.0.0'
+        classpath 'com.android.tools.build:gradle:4.2.2'
     }
+}
+
+plugins {
+    id 'io.github.gradle-nexus.publish-plugin' version "1.1.0"
+    id 'org.jetbrains.dokka' version "1.5.0"
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
         mavenLocal()
     }
 }
+
+project.ext.set("groupId", "io.github.tompee26")
+project.ext.set("versionCode", "1.0.0")
+project.ext.set("publishUrl", "https://github.com/tompee26/libaddressinput")
+project.ext.set("license", "Apache 2.0")
+project.ext.set("licenseUrl", "https://github.com/tompee26/libaddressinput/blob/master/LICENSE")
+project.ext.set("developerId", "tompee26")
+project.ext.set("developerName", "Tompee Balauag")
+project.ext.set("developerEmail", "tompee26@gmail.com")
+project.ext.set("scmConnection", "scm:git:github.com/tompee26/libaddressinput.git")
+project.ext.set("scmDevConnection", "scm:git:ssh://github.com/tompee26/libaddressinput.git")
+project.ext.set("scmUrl", "https://github.com/tompee26/libaddressinput/tree/master")
+
+apply plugin: 'io.github.gradle-nexus.publish-plugin'
+apply from: "${rootDir}/scripts/publish-root.gradle"

@@ -13,31 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.panpf.bintray-publish'
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+apply plugin: 'org.jetbrains.dokka'
 
-android {
-    compileSdkVersion 30
-    defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 30
+ext {
+    PUBLISH_GROUP_ID = groupId
+    PUBLISH_VERSION = versionCode
+    PUBLISH_ARTIFACT_ID = 'libaddressinput-common'
+    PUBLISH_DESCRIPTION = 'A library that assist application developers in collecting and handling postal addresses from all over the world.'
+    PUBLISH_URL = publishUrl
+    PUBLISH_LICENSE_NAME = license
+    PUBLISH_LICENSE_URL = licenseUrl
+    PUBLISH_DEVELOPER_ID = developerId
+    PUBLISH_DEVELOPER_NAME = developerName
+    PUBLISH_DEVELOPER_EMAIL = developerEmail
+    PUBLISH_SCM_CONNECTION = scmConnection
+    PUBLISH_SCM_DEVELOPER_CONNECTION = scmDevConnection
+    PUBLISH_SCM_URL = scmUrl
+}
+
+dokkaJavadoc {
+    dokkaSourceSets {
+        configureEach {
+            jdkVersion.set(8)
+        }
     }
 }
 
-publish {
-    def groupProjectID = 'com.tompee.addressinput'
-    def artifactProjectID = 'common'
-    def publishVersionID = '1.0.0'
-
-    userOrg = 'tompee26'
-    repoName = 'libaddressinput'
-    groupId = groupProjectID
-    artifactId = artifactProjectID
-    publishVersion = publishVersionID
-    desc = 'A library that assist application developers in collecting and handling postal addresses from all over the world.'
-    website = 'https://github.com/google/libaddressinput'
-}
-
+apply from: "${rootProject.projectDir}/scripts/publish-module.gradle"
 
 sourceCompatibility = '1.7'
 targetCompatibility = '1.7'
@@ -55,20 +59,21 @@ sourceSets {
     }
 }
 
-//test {
-//    /* Listen to events in the test execution lifecycle. */
-//    beforeTest { descriptor -> logger.lifecycle("Running test: " + descriptor) }
-//
-//    /* Show standard out and standard error of the test JVM(s) on the console. */
-//    // testLogging.showStandardStreams = true
-//
-//    /* Listen to standard out and standard error of the test JVM(s). */
-//    // onOutput { descriptor, event ->
-//    //   logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
-//    // }
-//}
+test {
+    /* Listen to events in the test execution lifecycle. */
+    beforeTest { descriptor -> logger.lifecycle("Running test: " + descriptor) }
+
+    /* Show standard out and standard error of the test JVM(s) on the console. */
+    // testLogging.showStandardStreams = true
+
+    /* Listen to standard out and standard error of the test JVM(s). */
+    // onOutput { descriptor, event ->
+    //   logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+    // }
+}
 
 dependencies {
+    implementation 'org.json:json:20180813'
     implementation 'com.google.guava:guava-gwt:18.0'
     testImplementation 'junit:junit:4.13'
     testImplementation 'com.google.truth:truth:0.25'
